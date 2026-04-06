@@ -30,7 +30,6 @@
     overflow-x: hidden;
   }
 
-  /* ─── BACKGROUND MESH ─── */
   body::before {
     content: '';
     position: fixed;
@@ -444,6 +443,7 @@
     padding: 100px 40px;
     max-width: 1100px;
     margin: 0 auto;
+    scroll-margin-top: 64px;
   }
 
   .section-eyebrow {
@@ -639,18 +639,13 @@
   }
 
   /* SUBMISSION */
-  .sub-cols {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 24px;
-    margin-bottom: 24px;
-  }
-
   .sub-card {
     background: var(--dark-card);
     border: 1px solid rgba(2,168,150,0.12);
     border-radius: 20px;
     padding: 32px;
+    max-width: 520px;
+    margin-bottom: 24px;
   }
 
   .sub-title {
@@ -683,6 +678,35 @@
     color: var(--accent);
     min-width: 20px;
     padding-top: 1px;
+  }
+
+  /* TWIBBON CARD */
+  .twibbon-card {
+    background: linear-gradient(135deg, rgba(2,128,144,0.12), rgba(2,195,154,0.06));
+    border: 1px solid rgba(2,168,150,0.35);
+    border-radius: 20px;
+    padding: 32px;
+    margin-top: 0;
+  }
+
+  .twibbon-card .sub-title {
+    border-bottom-color: rgba(2,168,150,0.2);
+  }
+
+  .twibbon-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(2,195,154,0.15);
+    border: 1px solid rgba(2,195,154,0.3);
+    border-radius: 100px;
+    padding: 4px 12px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--mint);
+    margin-bottom: 20px;
   }
 
   /* SCORING */
@@ -847,12 +871,30 @@
     z-index: 1;
   }
 
+  /* Special dot for webinar — glowing teal */
+  .tl-dot.webinar {
+    background: linear-gradient(135deg, #028090, #02C39A);
+    box-shadow: 0 0 0 4px rgba(2,195,154,0.2), 0 0 20px rgba(2,195,154,0.35), 0 8px 24px rgba(2,128,144,0.4);
+    animation: webinarPulse 2.5s ease-in-out infinite;
+  }
+
+  @keyframes webinarPulse {
+    0%, 100% { box-shadow: 0 0 0 4px rgba(2,195,154,0.2), 0 0 20px rgba(2,195,154,0.35), 0 8px 24px rgba(2,128,144,0.4); }
+    50%       { box-shadow: 0 0 0 8px rgba(2,195,154,0.12), 0 0 36px rgba(2,195,154,0.5), 0 8px 24px rgba(2,128,144,0.4); }
+  }
+
   .tl-body {
     background: var(--dark-card);
     border: 1px solid rgba(2,168,150,0.12);
     border-radius: 16px;
     padding: 20px 24px;
     flex: 1;
+  }
+
+  /* Webinar card highlighted */
+  .tl-body.webinar-body {
+    background: linear-gradient(135deg, rgba(2,128,144,0.15), rgba(2,195,154,0.07));
+    border-color: rgba(2,195,154,0.35);
   }
 
   .tl-phase {
@@ -881,6 +923,33 @@
   }
 
   .tl-desc { font-size: 13.5px; color: var(--muted); line-height: 1.6; }
+
+  /* Webinar info chips */
+  .webinar-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 14px;
+  }
+
+  .w-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    background: rgba(2,168,150,0.12);
+    border: 1px solid rgba(2,168,150,0.25);
+    border-radius: 100px;
+    padding: 5px 12px;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--accent);
+  }
+
+  .w-chip.mandatory {
+    background: rgba(240,192,96,0.1);
+    border-color: rgba(240,192,96,0.3);
+    color: var(--gold);
+  }
 
   /* CONTACT */
   .contact-grid {
@@ -951,6 +1020,7 @@
     .about-grid, .obj-list, .focus-grid, .sub-cols, .prize-grid, .benefits-grid, .contact-grid { grid-template-columns: 1fr; }
     .about-card.full { grid-column: 1; }
     .hero { padding: 80px 20px; }
+    .webinar-chips { gap: 6px; }
   }
 </style>
 </head>
@@ -1130,38 +1200,40 @@
   <section id="submission">
     <div class="section-eyebrow">Format Proposal</div>
     <h2 class="section-title">Yang Diharapkan dari Peserta</h2>
-    <p class="section-desc">Proposal ditulis dalam Bahasa Indonesia atau English, maks. 25 halaman (termasuk cover & lampiran), dikirim dalam format PDF.</p>
-    <div class="sub-cols">
-      <div class="sub-card">
-        <div class="sub-title">📄 Konten Proposal (Maks. 25 Halaman)</div>
-        <ol class="sub-list">
-          <li><span class="sub-num">1.</span> Cover — Nama tim, anggota, universitas, judul proposal</li>
-          <li><span class="sub-num">2.</span> Executive Summary — Ringkasan solusi utama (maks. 1 halaman)</li>
-          <li><span class="sub-num">3.</span> Analisis Masalah — Identifikasi masalah berbasis data & riset</li>
-          <li><span class="sub-num">4.</span> Analisis Lingkungan — Peran hunian, transportasi, green space, komunitas</li>
-          <li><span class="sub-num">5.</span> LRT City Sentul Deep Dive — Analisis positioning & potensi</li>
-          <li><span class="sub-num">6.</span> Solusi Strategis — Inovasi konkret, program, dan inisiatif</li>
-          <li><span class="sub-num">7.</span> Business Feasibility — Analisis finansial, timeline, sustainability</li>
-          <li><span class="sub-num">8.</span> Action Plan — Roadmap implementasi 1–5 tahun</li>
-          <li><span class="sub-num">9.</span> Lampiran — Data pendukung, referensi, survei primer</li>
-        </ol>
-      </div>
-      <div class="sub-card">
-        <div class="sub-title">⚙️ Format & Tools</div>
-        <ul class="sub-list">
-          <li><span class="sub-num">📁</span> Format file: PDF</li>
-          <li><span class="sub-num">📏</span> Maks. 25 halaman (termasuk cover & lampiran)</li>
-          <li><span class="sub-num">🌐</span> Bahasa: Indonesia atau English</li>
-          <li><span class="sub-num">📤</span> Upload via link WhatsApp Group</li>
-        </ul>
-        <div class="sub-title" style="margin-top:24px">🛠 Tools yang Disarankan</div>
-        <ul class="sub-list">
-          <li><span class="sub-num">📐</span> Framework: SWOT, PESTLE, Porter's 5 Forces</li>
-          <li><span class="sub-num">📊</span> Data: BPS, Bank Indonesia, OJK, Ipsos</li>
-          <li><span class="sub-num">🔬</span> Riset Primer: Survei / FGD mahasiswa</li>
-          <li><span class="sub-num">🌍</span> Benchmarking: Properti student-friendly global</li>
-        </ul>
-      </div>
+    <p class="section-desc">Proposal ditulis dalam Bahasa Indonesia atau English, maks. 15 halaman (termasuk cover & lampiran), dikirim dalam format PDF.</p>
+
+    <div class="sub-card">
+      <div class="sub-title">⚙️ Format Pengumpulan</div>
+      <ul class="sub-list">
+        <li><span class="sub-num">📁</span> Format file: PDF</li>
+        <li><span class="sub-num">📏</span> Maks. 15 halaman (termasuk cover & lampiran)</li>
+        <li><span class="sub-num">🌐</span> Bahasa: Indonesia atau English</li>
+        <li><span class="sub-num">📤</span> Upload via platform Xdemia — link akan diumumkan lebih lanjut</li>
+      </ul>
+    </div>
+
+    <!-- TWIBBON CARD -->
+    <div class="twibbon-card">
+      <div class="twibbon-badge">⚠️ Kewajiban Peserta</div>
+      <div class="sub-title">📸 Upload Twibbon & Tag Sosial Media</div>
+      <ul class="sub-list">
+        <li>
+          <span class="sub-num">📌</span>
+          <span>Seluruh peserta <strong style="color:var(--white)">wajib mengupload twibbon</strong> resmi Xdemia BCC 2026 di feed atau story Instagram selama periode <strong style="color:var(--accent)">registrasi normal (1–30 April 2026)</strong>. Peserta yang mendaftar <strong style="color:var(--white)">Early Bird tetap bisa dan dipersilakan</strong> melakukan ini kapan saja sebelum 30 April.</span>
+        </li>
+        <li>
+          <span class="sub-num">🏷</span>
+          <span>Wajib <strong style="color:var(--white)">tag kedua akun berikut</strong> di caption atau postingan: <strong style="color:var(--accent)">@xdemia_official</strong> dan <strong style="color:var(--accent)">@lrtcitysentul</strong>.</span>
+        </li>
+        <li>
+          <span class="sub-num">🔓</span>
+          <span>Pastikan akun Instagram dalam kondisi <strong style="color:var(--white)">publik</strong> saat upload agar verifikasi dapat dilakukan oleh panitia.</span>
+        </li>
+        <li>
+          <span class="sub-num">📎</span>
+          <span>Link twibbon resmi akan dibagikan melalui <strong style="color:var(--white)">WhatsApp Group</strong> setelah pendaftaran dikonfirmasi oleh panitia.</span>
+        </li>
+      </ul>
     </div>
   </section>
 
@@ -1277,6 +1349,8 @@
     <h2 class="section-title">Timeline</h2>
     <p class="section-desc">Dari registrasi hingga Grand Final, catat semua tanggal penting berikut.</p>
     <div class="timeline">
+
+      <!-- STEP 1: Registrasi -->
       <div class="tl-item">
         <div class="tl-dot">1</div>
         <div class="tl-body">
@@ -1286,6 +1360,8 @@
           <div class="tl-desc">Early Bird: Rp 75.000/tim (s.d. 31 Mar) · Normal: Rp 99.000/tim (1–30 Apr). Tim terdiri dari 1–3 mahasiswa.</div>
         </div>
       </div>
+
+      <!-- STEP 2: Case Release -->
       <div class="tl-item">
         <div class="tl-dot">2</div>
         <div class="tl-body">
@@ -1295,8 +1371,32 @@
           <div class="tl-desc">Undangan ke WhatsApp Group + case material dibagikan kepada semua tim terdaftar.</div>
         </div>
       </div>
+
+      <!-- STEP 3: WEBINAR — NEW -->
       <div class="tl-item">
-        <div class="tl-dot">3</div>
+        <div class="tl-dot webinar">3</div>
+        <div class="tl-body webinar-body">
+          <div class="tl-phase">Webinar Eksklusif · Wajib Diikuti</div>
+          <div class="tl-title">Think Like a Consultant</div>
+          <div class="tl-date">1 Mei 2026 · 18.00 – 20.00 WIB</div>
+          <div class="tl-desc">
+            Sesi webinar online untuk <strong style="color:var(--white)">seluruh peserta terdaftar</strong> bersama <strong style="color:var(--accent)">Pilar Asa Cendikia</strong>. Pelajari cara berpikir layaknya seorang konsultan bisnis — dari identifikasi masalah, analisis data, hingga menyusun rekomendasi strategis yang tajam dan terstruktur. Sesi ini dirancang sebagai bekal utama sebelum memulai pengerjaan proposal.
+            <br><br>
+            <strong style="color:var(--gold)">⚠ Kehadiran bersifat wajib.</strong> Presensi peserta akan dicatat oleh panitia sebagai bukti keseriusan mengikuti kompetisi. Pastikan seluruh anggota tim hadir tepat waktu.
+          </div>
+          <div class="webinar-chips">
+            <span class="w-chip mandatory">⚠ Wajib Hadir</span>
+            <span class="w-chip">🕕 18.00 – 20.00 WIB</span>
+            <span class="w-chip">💻 Online</span>
+            <span class="w-chip">🎤 Pilar Asa Cendikia</span>
+            <span class="w-chip">📋 Presensi Dicatat</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- STEP 4: Pengerjaan -->
+      <div class="tl-item">
+        <div class="tl-dot">4</div>
         <div class="tl-body">
           <div class="tl-phase">Pengerjaan</div>
           <div class="tl-title">Periode Pengerjaan Proposal</div>
@@ -1304,8 +1404,10 @@
           <div class="tl-desc">Tim menganalisis case dan menyusun solusi strategis secara online.</div>
         </div>
       </div>
+
+      <!-- STEP 5: Submission -->
       <div class="tl-item">
-        <div class="tl-dot">4</div>
+        <div class="tl-dot">5</div>
         <div class="tl-body">
           <div class="tl-phase">Submission</div>
           <div class="tl-title">Batas Pengumpulan Proposal</div>
@@ -1313,8 +1415,10 @@
           <div class="tl-desc">Batas akhir pengumpulan proposal dalam format PDF (maks. 25 halaman) via link WhatsApp Group.</div>
         </div>
       </div>
+
+      <!-- STEP 6: Seleksi -->
       <div class="tl-item">
-        <div class="tl-dot">5</div>
+        <div class="tl-dot">6</div>
         <div class="tl-body">
           <div class="tl-phase">Seleksi</div>
           <div class="tl-title">Penjurian & Pengumuman</div>
@@ -1322,8 +1426,10 @@
           <div class="tl-desc">Penjurian oleh panel dan pengumuman Top 10 Grand Finalists pada 29 Mei 2026.</div>
         </div>
       </div>
+
+      <!-- STEP 7: Mentoring -->
       <div class="tl-item">
-        <div class="tl-dot">6</div>
+        <div class="tl-dot">7</div>
         <div class="tl-body">
           <div class="tl-phase">Mentoring</div>
           <div class="tl-title">Sesi Mentoring Eksklusif</div>
@@ -1331,8 +1437,10 @@
           <div class="tl-desc">Sesi mentoring online eksklusif untuk Grand Finalists bersama mentor profesional.</div>
         </div>
       </div>
+
+      <!-- STEP 8: Grand Final -->
       <div class="tl-item">
-        <div class="tl-dot">7</div>
+        <div class="tl-dot">8</div>
         <div class="tl-body">
           <div class="tl-phase">Grand Final</div>
           <div class="tl-title">Presentasi & Awarding</div>
@@ -1340,6 +1448,7 @@
           <div class="tl-desc">Presentasi & Pitching di LRT City Sentul + Awarding Ceremony pemenang.</div>
         </div>
       </div>
+
     </div>
   </section>
 
@@ -1354,7 +1463,7 @@
       <div class="contact-card">
         <span class="contact-ico">✉️</span>
         <div class="contact-type">Email</div>
-        <div class="contact-val">xdemia.official@gmail.com</div>
+        <div class="contact-val"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="78001c1d151119381f15191114561b1715">[email&#160;protected]</a></div>
       </div>
       <div class="contact-card">
         <span class="contact-ico">💬</span>
@@ -1376,7 +1485,7 @@
 
 </div>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
   const CORRECT = 'xdemia2026';
 
   function checkPassword() {
@@ -1413,15 +1522,13 @@
     else { inp.type = 'password'; btn.textContent = '👁'; }
   }
 
-  // Smooth scroll for nav
   document.querySelectorAll('a[href^="#"]').forEach(a => {
     a.addEventListener('click', e => {
       e.preventDefault();
-      const t = document.querySelector(a.getAttribute('href'));
-      if (t) t.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      const target = document.querySelector(a.getAttribute('href'));
+      if (target) target.scrollIntoView({ behavior: 'smooth' });
     });
   });
 </script>
-
 </body>
 </html>
