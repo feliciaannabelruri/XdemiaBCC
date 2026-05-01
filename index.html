@@ -18,6 +18,8 @@
     --white: #ffffff;
     --gold: #f0c060;
     --accent: #4dd9c0;
+    --ruang-hening: #b388ff;
+    --ruang-hening-light: #ce93d8;
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -42,7 +44,6 @@
     z-index: 0;
   }
 
-  /* ─── PASSWORD SCREEN ─── */
   #lockScreen {
     position: fixed;
     inset: 0;
@@ -202,7 +203,6 @@
 
   .lock-error.hidden { opacity: 0; }
 
-  /* ─── MAIN SITE ─── */
   #mainSite {
     display: none;
     position: relative;
@@ -211,7 +211,6 @@
 
   #mainSite.visible { display: block; }
 
-  /* NAV */
   nav {
     position: sticky;
     top: 0;
@@ -256,7 +255,6 @@
 
   .nav-links a:hover { color: var(--white); background: rgba(2,168,150,0.1); }
 
-  /* HERO */
   .hero {
     min-height: 100vh;
     display: flex;
@@ -407,7 +405,6 @@
 
   .hero-cta:hover { transform: translateY(-3px); box-shadow: 0 20px 50px rgba(2,195,154,0.5); }
 
-  /* STATS ROW */
   .stats {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -438,7 +435,6 @@
 
   .stat-label { font-size: 13px; color: var(--muted); line-height: 1.5; max-width: 160px; margin: 0 auto; }
 
-  /* SECTION */
   section {
     padding: 100px 40px;
     max-width: 1100px;
@@ -474,7 +470,6 @@
     margin-bottom: 56px;
   }
 
-  /* ABOUT CARD */
   .about-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -533,7 +528,6 @@
   .info-label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); margin-bottom: 4px; }
   .info-val { font-size: 14px; font-weight: 600; color: var(--white); }
 
-  /* OBJECTIVES */
   .obj-list {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -566,7 +560,6 @@
 
   .obj-text { font-size: 14px; color: var(--muted); line-height: 1.6; padding-top: 6px; }
 
-  /* FOCUS AREAS */
   .focus-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -638,7 +631,6 @@
     background: var(--mint);
   }
 
-  /* SUBMISSION */
   .sub-card {
     background: var(--dark-card);
     border: 1px solid rgba(2,168,150,0.12);
@@ -680,7 +672,6 @@
     padding-top: 1px;
   }
 
-  /* TWIBBON CARD */
   .twibbon-card {
     background: linear-gradient(135deg, rgba(2,128,144,0.12), rgba(2,195,154,0.06));
     border: 1px solid rgba(2,168,150,0.35);
@@ -689,9 +680,7 @@
     margin-top: 0;
   }
 
-  .twibbon-card .sub-title {
-    border-bottom-color: rgba(2,168,150,0.2);
-  }
+  .twibbon-card .sub-title { border-bottom-color: rgba(2,168,150,0.2); }
 
   .twibbon-badge {
     display: inline-flex;
@@ -709,7 +698,6 @@
     margin-bottom: 20px;
   }
 
-  /* SCORING */
   .score-list { display: flex; flex-direction: column; gap: 12px; }
 
   .score-item {
@@ -746,7 +734,6 @@
     height: 100%;
     background: linear-gradient(90deg, var(--teal), var(--mint));
     border-radius: 10px;
-    transition: width 1s ease;
   }
 
   .score-name {
@@ -759,7 +746,6 @@
 
   .score-desc { font-size: 13px; color: var(--muted); line-height: 1.55; }
 
-  /* PRIZES */
   .prize-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -831,7 +817,6 @@
   .benefit-icon { font-size: 20px; flex-shrink: 0; }
   .benefit-text { font-size: 13px; color: var(--muted); line-height: 1.5; }
 
-  /* TIMELINE */
   .timeline {
     position: relative;
     padding: 16px 0;
@@ -864,14 +849,13 @@
     align-items: center;
     justify-content: center;
     font-family: 'Sora', sans-serif;
-    font-size: 16px;
+    font-size: 15px;
     font-weight: 800;
     color: var(--white);
     box-shadow: 0 0 0 4px rgba(2,168,150,0.15), 0 8px 24px rgba(2,128,144,0.4);
     z-index: 1;
   }
 
-  /* Special dot for webinar — glowing teal */
   .tl-dot.webinar {
     background: linear-gradient(135deg, #028090, #02C39A);
     box-shadow: 0 0 0 4px rgba(2,195,154,0.2), 0 0 20px rgba(2,195,154,0.35), 0 8px 24px rgba(2,128,144,0.4);
@@ -883,6 +867,17 @@
     50%       { box-shadow: 0 0 0 8px rgba(2,195,154,0.12), 0 0 36px rgba(2,195,154,0.5), 0 8px 24px rgba(2,128,144,0.4); }
   }
 
+  .tl-dot.ruang-hening {
+    background: linear-gradient(135deg, #7c3aed, #b388ff);
+    box-shadow: 0 0 0 4px rgba(179,136,255,0.2), 0 0 20px rgba(179,136,255,0.3), 0 8px 24px rgba(124,58,237,0.4);
+    animation: ruangHeningPulse 2.5s ease-in-out infinite;
+  }
+
+  @keyframes ruangHeningPulse {
+    0%, 100% { box-shadow: 0 0 0 4px rgba(179,136,255,0.2), 0 0 20px rgba(179,136,255,0.3), 0 8px 24px rgba(124,58,237,0.4); }
+    50%       { box-shadow: 0 0 0 8px rgba(179,136,255,0.12), 0 0 36px rgba(179,136,255,0.45), 0 8px 24px rgba(124,58,237,0.4); }
+  }
+
   .tl-body {
     background: var(--dark-card);
     border: 1px solid rgba(2,168,150,0.12);
@@ -891,10 +886,14 @@
     flex: 1;
   }
 
-  /* Webinar card highlighted */
   .tl-body.webinar-body {
     background: linear-gradient(135deg, rgba(2,128,144,0.15), rgba(2,195,154,0.07));
     border-color: rgba(2,195,154,0.35);
+  }
+
+  .tl-body.ruang-hening-body {
+    background: linear-gradient(135deg, rgba(124,58,237,0.12), rgba(179,136,255,0.05));
+    border-color: rgba(179,136,255,0.3);
   }
 
   .tl-phase {
@@ -906,6 +905,8 @@
     color: var(--accent);
     margin-bottom: 4px;
   }
+
+  .tl-phase.rh-phase { color: var(--ruang-hening); }
 
   .tl-title {
     font-family: 'Sora', sans-serif;
@@ -922,9 +923,10 @@
     margin-bottom: 8px;
   }
 
+  .tl-date.rh-date { color: var(--ruang-hening-light); }
+
   .tl-desc { font-size: 13.5px; color: var(--muted); line-height: 1.6; }
 
-  /* Webinar info chips */
   .webinar-chips {
     display: flex;
     flex-wrap: wrap;
@@ -951,7 +953,12 @@
     color: var(--gold);
   }
 
-  /* CONTACT */
+  .w-chip.rh {
+    background: rgba(179,136,255,0.1);
+    border-color: rgba(179,136,255,0.3);
+    color: var(--ruang-hening-light);
+  }
+
   .contact-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -988,7 +995,6 @@
     word-break: break-all;
   }
 
-  /* FOOTER */
   footer {
     text-align: center;
     padding: 60px 40px;
@@ -1004,20 +1010,18 @@
     background-clip: text;
   }
 
-  /* DIVIDER */
   .divider {
     height: 1px;
     background: linear-gradient(90deg, transparent, rgba(2,168,150,0.25), transparent);
     margin: 0 40px;
   }
 
-  /* RESPONSIVE */
   @media (max-width: 768px) {
     nav { padding: 0 20px; }
     .nav-links { display: none; }
     section { padding: 70px 20px; }
     .stats { grid-template-columns: 1fr; margin: 60px 20px 0; }
-    .about-grid, .obj-list, .focus-grid, .sub-cols, .prize-grid, .benefits-grid, .contact-grid { grid-template-columns: 1fr; }
+    .about-grid, .obj-list, .focus-grid, .prize-grid, .benefits-grid, .contact-grid { grid-template-columns: 1fr; }
     .about-card.full { grid-column: 1; }
     .hero { padding: 80px 20px; }
     .webinar-chips { gap: 6px; }
@@ -1026,7 +1030,6 @@
 </head>
 <body>
 
-<!-- LOCK SCREEN -->
 <div id="lockScreen">
   <div class="lock-card">
     <div class="lock-logo">Xdemia · BCC 2026</div>
@@ -1042,10 +1045,8 @@
   </div>
 </div>
 
-<!-- MAIN SITE -->
 <div id="mainSite">
 
-  <!-- NAV -->
   <nav>
     <div class="nav-brand">Xdemia BCC 2026</div>
     <ul class="nav-links">
@@ -1060,7 +1061,6 @@
     </ul>
   </nav>
 
-  <!-- HERO -->
   <div class="hero">
     <div class="hero-bg-grid"></div>
     <div class="hero-content">
@@ -1083,7 +1083,6 @@
     </div>
   </div>
 
-  <!-- STATS -->
   <div class="stats">
     <div class="stat-item">
       <div class="stat-num">91 Juta</div>
@@ -1099,7 +1098,6 @@
     </div>
   </div>
 
-  <!-- ABOUT -->
   <section id="about">
     <div class="section-eyebrow">Business Case Partner</div>
     <h2 class="section-title">Tentang LRT City Sentul</h2>
@@ -1125,14 +1123,13 @@
       <div class="about-card full">
         <div class="card-icon">📊</div>
         <div class="card-title">Context & Background</div>
-        <div class="card-text">Kesehatan mental mahasiswa Indonesia semakin kritis. Riset menunjukkan mahasiswa menghadapi stres akademik, finansial, dan sosial yang berdampak pada produktivitas dan kualitas hidup jangka panjang. <br><br>Satu faktor yang sering terlewatkan: <strong style="color:var(--white)">lingkungan tempat tinggal</strong>. Meskipun pertumbuhan properti digital terus meningkat, belum banyak developer yang secara khusus mengintegrasikan well-being mahasiswa ke dalam desain kawasan hunian.<br><br>LRT City Sentul hadir dengan potensi besar sebagai <strong style="color:var(--accent)">student-friendly living ecosystem</strong> — namun membutuhkan validasi, inovasi, dan rencana implementasi yang konkret.</div>
+        <div class="card-text">Kesehatan mental mahasiswa Indonesia semakin kritis. Riset menunjukkan mahasiswa menghadapi stres akademik, finansial, dan sosial yang berdampak pada produktivitas dan kualitas hidup jangka panjang.<br><br>Satu faktor yang sering terlewatkan: <strong style="color:var(--white)">lingkungan tempat tinggal</strong>. Meskipun pertumbuhan properti digital terus meningkat, belum banyak developer yang secara khusus mengintegrasikan well-being mahasiswa ke dalam desain kawasan hunian.<br><br>LRT City Sentul hadir dengan potensi besar sebagai <strong style="color:var(--accent)">student-friendly living ecosystem</strong> — namun membutuhkan validasi, inovasi, dan rencana implementasi yang konkret.</div>
       </div>
     </div>
   </section>
 
   <div class="divider"></div>
 
-  <!-- OBJECTIVES -->
   <section id="objectives">
     <div class="section-eyebrow">Tujuan Case</div>
     <h2 class="section-title">Case Objective</h2>
@@ -1149,7 +1146,6 @@
 
   <div class="divider"></div>
 
-  <!-- FOCUS AREAS -->
   <section id="focus">
     <div class="section-eyebrow">Area Fokus</div>
     <h2 class="section-title">Focus Areas</h2>
@@ -1196,7 +1192,6 @@
 
   <div class="divider"></div>
 
-  <!-- SUBMISSION -->
   <section id="submission">
     <div class="section-eyebrow">Format Proposal</div>
     <h2 class="section-title">Yang Diharapkan dari Peserta</h2>
@@ -1212,7 +1207,6 @@
       </ul>
     </div>
 
-    <!-- TWIBBON CARD -->
     <div class="twibbon-card">
       <div class="twibbon-badge">⚠️ Kewajiban Peserta</div>
       <div class="sub-title">📸 Upload Twibbon & Tag Sosial Media</div>
@@ -1239,7 +1233,6 @@
 
   <div class="divider"></div>
 
-  <!-- SCORING -->
   <section id="scoring">
     <div class="section-eyebrow">Kriteria Penilaian</div>
     <h2 class="section-title">Kriteria & Bobot</h2>
@@ -1300,7 +1293,6 @@
 
   <div class="divider"></div>
 
-  <!-- PRIZES -->
   <section id="prizes">
     <div class="section-eyebrow">Hadiah & Benefit</div>
     <h2 class="section-title">Total Hadiah: Rp 5.000.000</h2>
@@ -1343,14 +1335,13 @@
 
   <div class="divider"></div>
 
-  <!-- TIMELINE -->
   <section id="timeline">
     <div class="section-eyebrow">Jadwal Kompetisi</div>
     <h2 class="section-title">Timeline</h2>
     <p class="section-desc">Dari registrasi hingga Grand Final, catat semua tanggal penting berikut.</p>
     <div class="timeline">
 
-      <!-- STEP 1: Registrasi -->
+      <!-- 1: Registrasi -->
       <div class="tl-item">
         <div class="tl-dot">1</div>
         <div class="tl-body">
@@ -1361,7 +1352,7 @@
         </div>
       </div>
 
-      <!-- STEP 2: Case Release -->
+      <!-- 2: Case Release -->
       <div class="tl-item">
         <div class="tl-dot">2</div>
         <div class="tl-body">
@@ -1372,13 +1363,13 @@
         </div>
       </div>
 
-      <!-- STEP 3: WEBINAR — NEW -->
+      <!-- 3: Webinar Think Like a Consultant -->
       <div class="tl-item">
         <div class="tl-dot webinar">3</div>
         <div class="tl-body webinar-body">
           <div class="tl-phase">Webinar Eksklusif · Wajib Diikuti</div>
           <div class="tl-title">Think Like a Consultant</div>
-          <div class="tl-date">1 Mei 2026 · 18.00 – 20.00 WIB</div>
+          <div class="tl-date">4 Mei 2026 · 18.30 WIB – Selesai</div>
           <div class="tl-desc">
             Sesi webinar online untuk <strong style="color:var(--white)">seluruh peserta terdaftar</strong> bersama <strong style="color:var(--accent)">Pilar Asa Cendikia</strong>. Pelajari cara berpikir layaknya seorang konsultan bisnis — dari identifikasi masalah, analisis data, hingga menyusun rekomendasi strategis yang tajam dan terstruktur. Sesi ini dirancang sebagai bekal utama sebelum memulai pengerjaan proposal.
             <br><br>
@@ -1386,7 +1377,7 @@
           </div>
           <div class="webinar-chips">
             <span class="w-chip mandatory">⚠ Wajib Hadir</span>
-            <span class="w-chip">🕕 18.00 – 20.00 WIB</span>
+            <span class="w-chip">🕕 18.30 WIB</span>
             <span class="w-chip">💻 Online</span>
             <span class="w-chip">🎤 Pilar Asa Cendikia</span>
             <span class="w-chip">📋 Presensi Dicatat</span>
@@ -1394,7 +1385,7 @@
         </div>
       </div>
 
-      <!-- STEP 4: Pengerjaan -->
+      <!-- 4: Pengerjaan -->
       <div class="tl-item">
         <div class="tl-dot">4</div>
         <div class="tl-body">
@@ -1405,9 +1396,57 @@
         </div>
       </div>
 
-      <!-- STEP 5: Submission -->
+      <!-- 5: Ruang Hening Sesi 1 -->
       <div class="tl-item">
-        <div class="tl-dot">5</div>
+        <div class="tl-dot ruang-hening">5</div>
+        <div class="tl-body ruang-hening-body">
+          <div class="tl-phase rh-phase">Webinar Ruang Hening · Sesi 1</div>
+          <div class="tl-title">"Home: A Place to Rest or a Source of Stress?"</div>
+          <div class="tl-date rh-date">14 Mei 2026 · 18.30 WIB</div>
+          <div class="tl-desc">Sesi pertama dari rangkaian webinar kesehatan mental bersama <strong style="color:var(--ruang-hening-light)">Ruang Hening</strong>. Eksplorasi bagaimana rumah dan lingkungan tempat tinggal dapat menjadi sumber ketenangan — atau justru pemicu stres — bagi mahasiswa.</div>
+          <div class="webinar-chips">
+            <span class="w-chip rh">🕕 18.30 WIB</span>
+            <span class="w-chip rh">💻 Online</span>
+            <span class="w-chip rh">🧠 Ruang Hening</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 6: Ruang Hening Sesi 2 -->
+      <div class="tl-item">
+        <div class="tl-dot ruang-hening">6</div>
+        <div class="tl-body ruang-hening-body">
+          <div class="tl-phase rh-phase">Webinar Ruang Hening · Sesi 2</div>
+          <div class="tl-title">"Everyday Relationships That Quietly Drain You"</div>
+          <div class="tl-date rh-date">16 Mei 2026 · 12.30 WIB</div>
+          <div class="tl-desc">Sesi kedua bersama <strong style="color:var(--ruang-hening-light)">Ruang Hening</strong>. Membahas dinamika hubungan sehari-hari yang secara perlahan menguras energi mental — dari relasi sosial, lingkungan pertemanan, hingga tekanan dari sekitar.</div>
+          <div class="webinar-chips">
+            <span class="w-chip rh">🕧 12.30 WIB</span>
+            <span class="w-chip rh">💻 Online</span>
+            <span class="w-chip rh">🧠 Ruang Hening</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 7: Ruang Hening Sesi 3 -->
+      <div class="tl-item">
+        <div class="tl-dot ruang-hening">7</div>
+        <div class="tl-body ruang-hening-body">
+          <div class="tl-phase rh-phase">Webinar Ruang Hening · Sesi 3</div>
+          <div class="tl-title">"Staying Grounded in an Imperfect Environment"</div>
+          <div class="tl-date rh-date">20 Mei 2026 · 18.30 WIB</div>
+          <div class="tl-desc">Sesi penutup dari rangkaian webinar Ruang Hening. Belajar cara tetap hadir dan tenang di tengah lingkungan yang jauh dari sempurna — strategi grounding praktis untuk mahasiswa.</div>
+          <div class="webinar-chips">
+            <span class="w-chip rh">🕕 18.30 WIB</span>
+            <span class="w-chip rh">💻 Online</span>
+            <span class="w-chip rh">🧠 Ruang Hening</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 8: Submission -->
+      <div class="tl-item">
+        <div class="tl-dot">8</div>
         <div class="tl-body">
           <div class="tl-phase">Submission</div>
           <div class="tl-title">Batas Pengumpulan Proposal</div>
@@ -1416,9 +1455,9 @@
         </div>
       </div>
 
-      <!-- STEP 6: Seleksi -->
+      <!-- 9: Seleksi -->
       <div class="tl-item">
-        <div class="tl-dot">6</div>
+        <div class="tl-dot">9</div>
         <div class="tl-body">
           <div class="tl-phase">Seleksi</div>
           <div class="tl-title">Penjurian & Pengumuman</div>
@@ -1427,20 +1466,25 @@
         </div>
       </div>
 
-      <!-- STEP 7: Mentoring -->
+      <!-- 10: Mentoring by Pilar Asa Cendikia -->
       <div class="tl-item">
-        <div class="tl-dot">7</div>
-        <div class="tl-body">
-          <div class="tl-phase">Mentoring</div>
+        <div class="tl-dot webinar">10</div>
+        <div class="tl-body webinar-body">
+          <div class="tl-phase">Mentoring Eksklusif · Grand Finalists</div>
           <div class="tl-title">Sesi Mentoring Eksklusif</div>
           <div class="tl-date">30 – 31 Mei 2026</div>
-          <div class="tl-desc">Sesi mentoring online eksklusif untuk Grand Finalists bersama mentor profesional.</div>
+          <div class="tl-desc">Sesi mentoring online eksklusif untuk <strong style="color:var(--white)">Grand Finalists</strong> bersama mentor profesional dari <strong style="color:var(--accent)">Pilar Asa Cendikia</strong>. Persiapkan presentasi terbaik sebelum Grand Final.</div>
+          <div class="webinar-chips">
+            <span class="w-chip">💻 Online</span>
+            <span class="w-chip">🎤 Pilar Asa Cendikia</span>
+            <span class="w-chip">🏆 Grand Finalists Only</span>
+          </div>
         </div>
       </div>
 
-      <!-- STEP 8: Grand Final -->
+      <!-- 11: Grand Final -->
       <div class="tl-item">
-        <div class="tl-dot">8</div>
+        <div class="tl-dot">11</div>
         <div class="tl-body">
           <div class="tl-phase">Grand Final</div>
           <div class="tl-title">Presentasi & Awarding</div>
@@ -1454,7 +1498,6 @@
 
   <div class="divider"></div>
 
-  <!-- CONTACT -->
   <section id="contact">
     <div class="section-eyebrow">Hubungi Kami</div>
     <h2 class="section-title">Informasi & Kontak</h2>
@@ -1463,7 +1506,7 @@
       <div class="contact-card">
         <span class="contact-ico">✉️</span>
         <div class="contact-type">Email</div>
-        <div class="contact-val"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="78001c1d151119381f15191114561b1715">[email&#160;protected]</a></div>
+        <div class="contact-val">info@xdemia.com</div>
       </div>
       <div class="contact-card">
         <span class="contact-ico">💬</span>
@@ -1485,7 +1528,7 @@
 
 </div>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script>
   const CORRECT = 'xdemia2026';
 
   function checkPassword() {
