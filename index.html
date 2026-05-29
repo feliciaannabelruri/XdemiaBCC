@@ -254,7 +254,28 @@
   }
 
   .nav-links a:hover { color: var(--white); background: rgba(2,168,150,0.1); }
-
+.nav-finalist-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: linear-gradient(135deg, #c8922a, #f0c060);
+  color: #1a0e00;
+  text-decoration: none;
+  font-family: 'Sora', sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 7px 16px;
+  border-radius: 100px;
+  transition: transform 0.2s, box-shadow 0.2s;
+  box-shadow: 0 4px 16px rgba(240,192,96,0.25);
+  white-space: nowrap;
+}
+.nav-finalist-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 24px rgba(240,192,96,0.4);
+}
   .hero {
     min-height: 100vh;
     display: flex;
@@ -1146,6 +1167,7 @@
       <li><a href="#timeline">Timeline</a></li>
       <li><a href="#contact">Kontak</a></li>
     </ul>
+    <a href="finalist.html" class="nav-finalist-btn">🏆 Grand Final Info</a>
   </nav>
 
   <div class="hero">
